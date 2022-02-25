@@ -1,0 +1,18 @@
+ animal insect</s> fisha
+ animal egg</s> insect fish
+ ant :.a|
+ insect animal organism ant individual
+ egg animal insect bird</s>
+ insect animal egg owl bird
+ oak tree</s>a wood
+ tree</s>. individual pine
+ onion egg object</s> apple
+a</s> flower insect egg
+ onion :</s>a.
+a</s>|… |
+ hammer. object arrow</s>
+ instrument</s> ax arrow object
+ object automobile car vehiclea
+ automobile objecta</s> animal
+ hotel inn institution</s>a
+ house object: apartment entity
