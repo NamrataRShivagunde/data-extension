@@ -135,7 +135,7 @@ def main():
     print("Top 1 match = ", top1_accuracy)
     
     file = open("result.txt", 'a')
-    file.writelines([modeldir, " ----Top 5 match accuracy = ", str(topk_accuracy), "----Top 1 match accuracy = ", str(top1_accuracy) ,'\n'])
+    file.writelines([file_path, "----" ,modeldir, " ----Top 5 match accuracy = ", str(topk_accuracy), "----Top 1 match accuracy = ", str(top1_accuracy) ,'\n'])
 
 if __name__ == '__main__':
     main()
