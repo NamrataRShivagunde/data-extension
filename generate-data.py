@@ -5,6 +5,7 @@
 # output = More samples like them - generated_data/role-880-date-version
 # system = GPT2
 
+from ast import arg
 from dis import Instruction
 from os import truncate
 from unittest.util import _MAX_LENGTH
@@ -24,20 +25,20 @@ def get_arguments():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default='neg', help="'neg' for neg-simp, 'role' for role-88")
-    # parser.add_argument("--curl", default=None, help="curl command for gpt3")
+    parser.add_argument("--key", default=None, help="key for gpt3 request")
     args = parser.parse_args()
     return args
 
-def generate_role88():
+def generate_role88(key):
     """
     generate role-88 pairs using raw role-88
     """
     data = []
-    with open("data/raw_data/ROLE-88/ROLE-88.tsv","r") as f:
+    with open("data/raw-data/ROLE-88/ROLE-88.tsv","r") as f:
         data = f.readlines() # readlines() returns a list of items, each item is a line in your file
     NUM_SAMPLES = 4
 
-    for i in range(25): 
+    for i in range(2): 
         print(i)
         random_num_list = []
         while len(random_num_list) < NUM_SAMPLES:
@@ -61,9 +62,11 @@ def generate_role88():
     # TO DO remove the key
         curl_req = 'curl https://api.openai.com/v1/completions \
         -H "Content-Type: application/json" \
-        -H "Authorization: Bearer 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" \
+        -H "Authorization: Bearer ' + key + '" \
         -d \'{"model": "text-davinci-002", "prompt": ' + '"' + prompt + '"' +', "temperature": 0.64, "max_tokens": 100}\''
         
+        print(curl_req)
+
         print("prompt-----------------",prompt)
         # Getting resposnse from gpt3
         gpt3result = subprocess.check_output(curl_req, shell=True)
@@ -104,10 +107,11 @@ def generate_negsimp():
 
 def main():
     args = get_arguments()
+    key = args.key
     if args.dataset == 'negsimp':
         generate_negsimp()
     elif args.dataset == 'role':
-        generate_role88()
+        generate_role88(key)
         
 
 if __name__ == "__main__":
