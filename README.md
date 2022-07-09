@@ -9,6 +9,7 @@ to evaluate models on the extended NEG-SIMP dataet run
         python evaluation.py 'data/role-88-generated.txt' rsoberta-base
 
 to evaluate all models run
+        python run-all-models.py 'data/neg-simp-generated.txt'
         python run-all-models.py 'data/role-88-generated.txt'
 
 

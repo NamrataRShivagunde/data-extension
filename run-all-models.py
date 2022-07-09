@@ -29,11 +29,11 @@ args = parser.parse_args()
 # os.system('python evaluation.py {} t5-large'.format(args.datasetpath))
 # os.system('python evaluation.py {} t5-3b'.format(args.datasetpath))
 
-# os.system('python evaluation.py {} gpt2'.format(args.datasetpath))
-# os.system('python evaluation.py {} gpt2-medium'.format(args.datasetpath))
-# os.system('python evaluation.py {} gpt2-large'.format(args.datasetpath))
-os.system('python evaluation.py {} EleutherAI/gpt-neo-1.3B'.format(args.datasetpath))
+os.system('python evaluation.py {} gpt2'.format(args.datasetpath))
+os.system('python evaluation.py {} gpt2-medium'.format(args.datasetpath))
+os.system('python evaluation.py {} gpt2-large'.format(args.datasetpath))
+# os.system('python evaluation.py {} EleutherAI/gpt-neo-1.3B'.format(args.datasetpath))
 
-# os.system('python evaluation.py {} gpt2-xl'.format(args.datasetpath))
+os.system('python evaluation.py {} gpt2-xl'.format(args.datasetpath))
 
 # os.system('python evaluation.py {} distilbert-base-uncased'.format(args.datasetpath))
