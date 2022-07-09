@@ -90,13 +90,13 @@ def main():
         # indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
         # tokens_tensor = torch.tensor([indexed_tokens])
 
-        tokenized_input = tokenizer(item, return_tensors="pt").input_ids
+        tokenized_input = tokenizer(item, return_tensors="pt")
         tokenized_input = tokenized_input.to(device)
 
         if modeldir.startswith('t5'):
             decoder_ids = tokenizer("<pad> <extra_id_0>", add_special_tokens=False, return_tensors="pt").input_ids
             decoder_ids = decoder_ids.to(device) 
-            predictions = model(input_ids=tokenized_input, decoder_input_ids=decoder_ids)
+            predictions = model(input_ids=tokenized_input.input_ids, decoder_input_ids=decoder_ids)
         else:
             predictions = model(**tokenized_input)
 
