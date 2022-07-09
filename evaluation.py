@@ -1,3 +1,4 @@
+from numpy import mod
 import transformers
 import torch
 import argparse
@@ -65,14 +66,18 @@ def main():
     modeldir = args.model_name_or_path
     device = args.device
     source, label = process_data(file_path, modeldir)
-    print(source, label)
+    # print(source, label)
     # Define model and tokenizer
     tokenizer = transformers.AutoTokenizer.from_pretrained(modeldir)
     if modeldir.startswith("gpt"):
         model = transformers.GPT2LMHeadModel.from_pretrained(modeldir).to(device)
     elif modeldir.startswith("t5"):
         model = transformers.T5ForConditionalGeneration.from_pretrained(modeldir).to(device)
-    else: # for BERT, RoBERTa and ALBERT
+    elif modeldir.startswith("albert"):
+        model = transformers.AlbertForMaskedLM.from_pretrained(modeldir).to(device)
+    elif modeldir.startswith("distilbert"):
+        model = transformers.DistilBertForMaskedLM.from_pretrained(modeldir).to(device)
+    else: # for BERT, RoBERTa
         model = transformers.AutoModelForCausalLM.from_pretrained(modeldir).to(device)
     model.eval()
     
@@ -80,15 +85,17 @@ def main():
     top_predictions = []
     k = 10
     for item in source:
-        tokenized_text = tokenizer.tokenize(item)
-        indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
-        tokens_tensor = torch.tensor([indexed_tokens])
+        # tokenized_text = tokenizer.tokenize(item)
+        # indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
+        # tokens_tensor = torch.tensor([indexed_tokens])
 
-        tokenized_input = tokenizer(item, return_tensors="pt")
+        tokenized_input = tokenizer(item, return_tensors="pt").input_ids
+        tokenized_input = tokenized_input.to(device)
 
         if modeldir.startswith('t5'):
-            decoder_ids = tokenizer("<pad> <extra_id_0>", add_special_tokens=False, return_tensors="pt").to(device) 
-            predictions = model(input_ids=tokenized_text["input_ids"], decoder_input_ids=decoder_ids["input_ids"])
+            decoder_ids = tokenizer("<pad> <extra_id_0>", add_special_tokens=False, return_tensors="pt").input_ids
+            decoder_ids = decoder_ids.to(device) 
+            predictions = model(input_ids=tokenized_input, decoder_input_ids=decoder_ids)
         else:
             predictions = model(**tokenized_input)
 
@@ -122,7 +129,7 @@ def main():
     topkmatch = 0
     top1match = 0
     for i in range(len(top_predictions)):
-        print(label[i], "--->", top_predictions[i])
+        # print(label[i], "--->", top_predictions[i])
         if label[i] in top_predictions[i]:
             topkmatch += 1
         if label[i] == top_predictions[i][0]:

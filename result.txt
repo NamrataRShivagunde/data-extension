@@ -1,1 +1,0 @@
-data/role-88-generated.txt----roberta-base ----Top 5 match accuracy = 0.266----Top 1 match accuracy = 0.0

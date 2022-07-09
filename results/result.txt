@@ -1,4 +1,0 @@
-bert-base-uncased Top 5 match = bert-base-uncased Top 5 match = 0.6111111111111112Top 1 match = 0.0bert-base-uncased ----Top 5 match = 0.6111111111111112----Top 1 match = 0.0bert-base-uncased ----Top 5 match = 0.6111111111111112----Top 1 match = 0.0
-bert-base-uncased ----Top 5 match = 0.6111111111111112----Top 1 match = 0.0
-bert-base-uncased ----Top 5 match accuracy = 0.6111111111111112----Top 1 match accuracy = 0.0
-bert-base-uncased ----Top 5 match accuracy = 0.36333333333333334----Top 1 match accuracy = 0.0
