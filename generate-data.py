@@ -38,7 +38,7 @@ def generate_role88(key):
         data = f.readlines() # readlines() returns a list of items, each item is a line in your file
     NUM_SAMPLES = 4
 
-    for i in range(30): 
+    for i in range(2): 
         print(i)
         random_num_list = []
         while len(random_num_list) < NUM_SAMPLES:
