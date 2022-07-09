@@ -20,3 +20,7 @@ data/role-88-generated.txt----gpt2-medium ----Top 5 match accuracy = 0.279333333
 data/role-88-generated.txt----gpt2-large ----Top 5 match accuracy = 0.29133333333333333----Top 1 match accuracy = 0.0
 data/role-88-generated.txt----gpt2-xl ----Top 5 match accuracy = 0.31733333333333336----Top 1 match accuracy = 0.0
 data/role-88-generated.txt----distilbert-base-uncased ----Top 5 match accuracy = 0.276----Top 1 match accuracy = 0.0
+data/neg-simp-generated.txt----gpt2 ----Top 5 match accuracy = 0.03441558441558441----Top 1 match accuracy = 0.0
+data/neg-simp-generated.txt----gpt2-medium ----Top 5 match accuracy = 0.033116883116883114----Top 1 match accuracy = 0.0
+data/neg-simp-generated.txt----gpt2-large ----Top 5 match accuracy = 0.17727272727272728----Top 1 match accuracy = 0.0
+data/neg-simp-generated.txt----gpt2-xl ----Top 5 match accuracy = 0.09090909090909091----Top 1 match accuracy = 0.0
