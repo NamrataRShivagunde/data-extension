@@ -1,20 +1,9 @@
-# this python script generates data from GPT2
-
-# system design - 
-# input = Role dataset few shot samples - random 4 or 8 - get from data/raw_data
-# output = More samples like them - generated_data/role-880-date-version
-# system = GPT2
-
-from ast import arg
-from dis import Instruction
 from os import truncate
 from unittest.util import _MAX_LENGTH
 from  transformers import GPT2LMHeadModel, GPT2Tokenizer
 import pandas as pd
 import random
 import argparse
-import re
-import os
 import subprocess
 import json
 
@@ -36,10 +25,9 @@ def generate_role88(key):
     data = []
     with open("data/raw-data/ROLE-88/ROLE-88.tsv","r") as f:
         data = f.readlines() # readlines() returns a list of items, each item is a line in your file
-    NUM_SAMPLES = 4
+    NUM_SAMPLES = 4 # Number of in context samples
 
-    for i in range(2): 
-        print(i)
+    for i in range(10):  # How many times we are prompting gpt3 with NUM_SAMPLES
         random_num_list = []
         while len(random_num_list) < NUM_SAMPLES:
             random_num_list.append(random.randrange(1, len(data), 2))
@@ -59,28 +47,23 @@ def generate_role88(key):
  
 
         # pass this prompt to the curl command to gpt3
-    # TO DO remove the key
         curl_req = 'curl https://api.openai.com/v1/completions \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer ' + key + '" \
         -d \'{"model": "text-davinci-002", "prompt": ' + '"' + prompt + '"' +', "temperature": 0.64, "max_tokens": 100}\''
         
-        print(curl_req)
-
-        print("prompt-----------------",prompt)
         # Getting resposnse from gpt3
         gpt3result = subprocess.check_output(curl_req, shell=True)
-        # gpt3result = '{"id":"cmpl-5RE97W2MnajgO2Lln0eVDLp7W3pyS","object":"text_completion","created":1657170917,"model":"text-davinci-002","choices":[{"text":"\\n\\nThis is a test","index":0,"logprobs":null,"finish_reason":"length"}],"usage":{"prompt_tokens":5,"completion_tokens":6,"total_tokens":11}}\n'
         gpt3result = json.loads(gpt3result)
 
         # extracting the output text from gpt3 response
         gpt3result = gpt3result['choices'][0]['text']
         print(gpt3result)
         
-        # dumping the extracted text to a txt file
+        # dumping the extracted text to a text file
         file = open("data/intermediate-data/role-88-generated-notcleaned.txt", "a") 
         file.write(gpt3result)
-        # clean it manually
+        # Next the role-88-generated-notcleaned.txt file is manually cleaned
    
 
 
@@ -95,6 +78,7 @@ def generate_negsimp():
     for cat, subcat in cat_subcat.items():
         subcat = subcat.split(',')
         for item in subcat:
+            # using the template
             aff = 'A ' + item + " is (a/an) " + cat.lower() + ','
             neg = 'A ' + item + " is not (a/an) " + random.choice([x.lower() for x in file['Category'] if x != cat]) + ','
             sent.append(aff)

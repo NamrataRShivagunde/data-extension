@@ -1,22 +1,4 @@
-data/role-88-generated.txt----t5-small ----Top 5 match accuracy = 0.12333333333333334----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----bert-base-uncased ----Top 5 match accuracy = 0.2846666666666667----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----bert-large-uncased ----Top 5 match accuracy = 0.312----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----roberta-base ----Top 5 match accuracy = 0.266----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----roberta-large ----Top 5 match accuracy = 0.3413333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-base-v1 ----Top 5 match accuracy = 0.16533333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-large-v1 ----Top 5 match accuracy = 0.24333333333333335----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-xlarge-v1 ----Top 5 match accuracy = 0.2753333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-xxlarge-v1 ----Top 5 match accuracy = 0.37533333333333335----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-base-v2 ----Top 5 match accuracy = 0.22866666666666666----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-large-v2 ----Top 5 match accuracy = 0.2733333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-xlarge-v2 ----Top 5 match accuracy = 0.3----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----albert-xxlarge-v2 ----Top 5 match accuracy = 0.37533333333333335----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----t5-small ----Top 5 match accuracy = 0.12333333333333334----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----t5-base ----Top 5 match accuracy = 0.248----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----t5-large ----Top 5 match accuracy = 0.29933333333333334----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----t5-3b ----Top 5 match accuracy = 0.318----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----gpt2 ----Top 5 match accuracy = 0.206----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----gpt2-medium ----Top 5 match accuracy = 0.2793333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----gpt2-large ----Top 5 match accuracy = 0.29133333333333333----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----gpt2-xl ----Top 5 match accuracy = 0.31733333333333336----Top 1 match accuracy = 0.0
-data/role-88-generated.txt----distilbert-base-uncased ----Top 5 match accuracy = 0.276----Top 1 match accuracy = 0.0
+data/neg-1500-simp-generated.txt | bert-base-uncased | 0.2844155844155844 | 0.22987012987012986 | 0.2 | 0.06363636363636363
+
+data/neg-1500-simp-generated.txt | t5-small | 0.09350649350649351 | 0.04285714285714286 | 0.006493506493506494 | 0.0
+

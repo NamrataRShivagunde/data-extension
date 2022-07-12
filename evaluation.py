@@ -3,6 +3,9 @@ import transformers
 import torch
 import argparse
 import re
+import subprocess
+import json
+
 
 def get_args():
     """ Set hyperparameters """
@@ -20,7 +23,7 @@ def get_args():
     return args
 
 def process_data(file_path, modeldir):
-    """Convert the examples into source and label
+    """Convert the sentences into source and label
 
     Arguments 
         file_path (string) : file path
@@ -40,8 +43,8 @@ def process_data(file_path, modeldir):
     source = []
     label = []
     
-    # Read line by line, remove (, ), , and replace last word with [MASK]
-    # Append last word to label file
+    # Read line by line, remove (, ), , and replace last word with [MASK] and add to source list
+    # Append target word to label list
     with open(file_path) as f:
         text = f.readlines()
         for line in text:
@@ -59,6 +62,7 @@ def process_data(file_path, modeldir):
             label.append(line_label.rstrip("\n"))
             source.append(line_source)
     return source, label
+   
 
 def main():
     args = get_args()
@@ -66,7 +70,11 @@ def main():
     modeldir = args.model_name_or_path
     device = args.device
     source, label = process_data(file_path, modeldir)
-    # print(source, label)
+    k = 20
+    file = open("result.txt", 'a')
+    sensitivity_record = open("sensitivity.txt", 'a')
+    # file.writelines([file_path, "\n", " | Model | top {} accuracy | top 10 accuracy | top 5 accuracy | top 1 accuracy".format(k), "\n"])
+
     # Define model and tokenizer
     print("Running experiment for ", modeldir)
     tokenizer = transformers.AutoTokenizer.from_pretrained(modeldir)
@@ -84,11 +92,9 @@ def main():
     
     # Getting top k predictions from the model
     top_predictions = []
-    k = 10
+    
     for item in source:
-        # tokenized_text = tokenizer.tokenize(item)
-        # indexed_tokens = tokenizer.convert_tokens_to_ids(tokenized_text)
-        # tokens_tensor = torch.tensor([indexed_tokens])
+        # item is e.g. 'The librarian documented which journalist the celebrities had [MASK]'
 
         tokenized_input = tokenizer(item, return_tensors="pt")
         tokenized_input = tokenized_input.to(device)
@@ -113,38 +119,63 @@ def main():
             for i, tok in enumerate(tokenized_input['input_ids'].reshape(-1)):
                 if tok == tokenizer.convert_tokens_to_ids(token): 
                     mask_index = i       
-            # mask_index = ((tokenized_text["input_ids"][0] == tokenizer.convert_tokens_to_ids(token)).nonzero(as_tuple=True)[0]).item()
-        
+                    
         predictions = predictions.logits
         softpred = torch.softmax(predictions[0, mask_index],0)
         top_inds = torch.argsort(softpred, descending=True)[:k].cpu().numpy()
         top_tok_preds = tokenizer.decode(top_inds, skip_special_tokens=True)
         top_predictions.append(top_tok_preds)
 
-    # textfile = open("predictions/{}.txt".format(modeldir), "w")
-    # for item in top_predictions:
-    #     textfile.write(item + "\n")      
-    # textfile.close()
+    step = 1
+    if 'neg' in file_path:
+        step = 2 # for neg as we need only affirmative sentences
 
-    # Accuracy
+   
+    # for role - 1500
+    # Accuracy for top 1, 5, 10 and 20 predictions
     topkmatch = 0
+    top10match = 0
+    top5match = 0
     top1match = 0
-    for i in range(len(top_predictions)):
-        # print(label[i], "--->", top_predictions[i])
-        if label[i] in top_predictions[i]:
+    flipped = 0 # to keep track of how many times target word flips seeing 'not'
+
+    print("----------------",top_predictions)
+    for i in range(0, len(top_predictions), step):
+        list_top_pred = top_predictions[i].split(' ')
+
+        # sensitivity for neg
+        if 'neg' in file_path:
+            if list_top_pred[0] != top_predictions[i+1].split(' ')[0]:
+                flipped += 1
+                print(flipped)
+    
+        if label[i] in list_top_pred:
             topkmatch += 1
-        if label[i] == top_predictions[i][0]:
+        if label[i] in list_top_pred[:10]:
+            top10match += 1
+        if label[i] in list_top_pred[:5]:
+            top5match += 1
+        if label[i] == list_top_pred[0]:
             top1match += 1
 
-    topk_accuracy = topkmatch/len(top_predictions)
-    top1_accuracy = top1match/len(top_predictions)
 
-    print("Top 5 match = ", topk_accuracy)
+    topk_accuracy = step * topkmatch / len(top_predictions)
+    top10_accuracy = step * top10match / len(top_predictions)
+    top5_accuracy = step * top5match / len(top_predictions)
+    top1_accuracy = step * top1match / len(top_predictions)
+
+    print("model = ", modeldir)
+    print("Top 20 match = ", topk_accuracy)
+    print("Top 10 match = ", top10_accuracy)
+    print("Top 5 match = ", top5_accuracy)
     print("Top 1 match = ", top1_accuracy)
     
-    
-    file = open("result.txt", 'a')
-    file.writelines([file_path, "----" ,modeldir, " ----Top 5 match accuracy = ", str(topk_accuracy), "----Top 1 match accuracy = ", str(top1_accuracy) ,'\n'])
+    print(flipped)
+    file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
+    if 'neg' in file_path:
+        sensitivity_record.writelines([modeldir, " | ", "% target word changed due to negation = " , str(2 * flipped/len(top_predictions)), "\n"])
     print("Completed experiment for ", modeldir)
+
+
 if __name__ == '__main__':
     main()
