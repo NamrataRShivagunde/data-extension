@@ -139,7 +139,6 @@ def main():
     top1match = 0
     flipped = 0 # to keep track of how many times target word flips seeing 'not'
 
-    print("----------------",top_predictions)
     for i in range(0, len(top_predictions), step):
         list_top_pred = top_predictions[i].split(' ')
 
@@ -170,7 +169,6 @@ def main():
     print("Top 5 match = ", top5_accuracy)
     print("Top 1 match = ", top1_accuracy)
     
-    print(flipped)
     file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
     if 'neg' in file_path:
         sensitivity_record.writelines([modeldir, " | ", "% target word changed due to negation = " , str(2 * flipped/len(top_predictions)), "\n"])
