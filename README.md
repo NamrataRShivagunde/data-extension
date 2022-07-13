@@ -14,8 +14,8 @@ to evaluate a particular model on the extended NEG-1500-SIMP dataset, run
         python evaluation.py 'data/role-88-generated.txt' roberta-base
 
 to evaluate all models run
-        python run-all-models.py 'data/neg-simp-generated.txt'
-        python run-all-models.py 'data/role-88-generated.txt'
+        python run-all-models.py 'data/neg-1500-simp-generated.txt'
+        python run-all-models.py 'data/role-1500-generated.txt'
 
 result.txt has the result 
         its top k prediction accuracy for top 20 | top 10 | top 5 | top 1
