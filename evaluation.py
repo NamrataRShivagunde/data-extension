@@ -215,7 +215,7 @@ def evaluation(modeldir, device, source, label, k, file_path):
     file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
     if 'neg' in file_path:
         if top1match != 0:
-            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(2 * flipped/top1match), " | top 1 match = ", str(top1match),"\n"])
+            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(step * flipped/top1match), " | top 1 match = ", str(top1match),"\n"])
     print("Completed experiment for ", modeldir)
 
 def evaluation_gpt3(modeldir, key, source, label, file_path):
