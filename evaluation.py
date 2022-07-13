@@ -85,7 +85,7 @@ def gpt3_responses(file_path, key):
     # item is e.g. 'The librarian documented which journalist the celebrities had '
         item = item.strip()
         prompt = Instruction + item 
-        
+
         curl_req = 'curl https://api.openai.com/v1/completions \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer ' + key + '" \
@@ -168,9 +168,10 @@ def evaluation(modeldir, device, source, label, k, file_path):
         top_predictions.append(top_tok_preds)
 
         step = 1
+        dataset = 'role-1500'
         if 'neg' in file_path:
             step = 2 # for neg as we need only affirmative sentences
-
+            dataset = 'neg-1500-simp'
     
         # for role - 1500
         # Accuracy for top 1, 5, 10 and 20 predictions
@@ -181,7 +182,12 @@ def evaluation(modeldir, device, source, label, k, file_path):
         flipped = 0 # to keep track of how many times target word flips seeing 'not'
 
         for i in range(0, len(top_predictions), step):
+
             list_top_pred = top_predictions[i].split(' ')
+
+            file_pred = open("predictions/{}/{}.txt".format(dataset, modeldir), 'w')
+            file_pred.writelines([str(list_top_pred)])
+
 
             if label[i] in list_top_pred:
                 topkmatch += 1
