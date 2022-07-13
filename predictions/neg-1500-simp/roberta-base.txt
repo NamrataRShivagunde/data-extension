@@ -1,5 +1,0 @@
-['', 'a', ':', 'named.', 'an:…', 'called...', 'the...', 'like', 'to', ';', 'someone', 'dead', 'uncle', 'one!']
-['', 'a', ':.', 'an', 'uncle', 'named…:!', 'someone', 'one', ';......', 'the', 'not', 'or', 'like', 'called']
-['.', ':', 'born', 'a', 'male', ';:', 'not', 'one', 'an', 'named', 'father', 'the', 'always', 'evil!', 'mother', 'of', 'parent']
-['', 'a', 'mother', 'born.', 'woman', ':', 'an:', 'father...', 'not', 'being', 'one…', 'the', 'always', 'to', 'female...']
-['', 'a', 'named', ':.', 'called', 'of', 'an', 'born…', 'the...', 'from', 'to', 'or', 'one', 'like', 'killed', ';', 'with']

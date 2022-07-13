@@ -54,11 +54,11 @@ def process_data(file_path, modeldir):
             splitted_line = line.split(" ")
             line_label = splitted_line[-1]
             if modeldir.startswith("roberta"):
-                line_source = line.replace(line_label, '<mask>')
+                line_source = line.replace(line_label, '<mask> .')
             elif modeldir.startswith("gpt"):
                 line_source = line.replace(line_label, '')
             elif modeldir.startswith('t5'):
-                line_source = line.replace(line_label, '<extra_id_0>')
+                line_source = line.replace(line_label, '<extra_id_0>.')
             else:
                 line_source = line.replace(line_label, '[MASK].')
             label.append(line_label.rstrip("\n"))
@@ -123,12 +123,8 @@ def evaluation(modeldir, device, source, label, k, file_path):
         model = transformers.GPT2LMHeadModel.from_pretrained(modeldir).to(device)
     elif modeldir.startswith("t5"):
         model = transformers.T5ForConditionalGeneration.from_pretrained(modeldir).to(device)
-    elif modeldir.startswith("albert"):
-        model = transformers.AlbertForMaskedLM.from_pretrained(modeldir).to(device)
-    elif modeldir.startswith("distilbert"):
-        model = transformers.DistilBertForMaskedLM.from_pretrained(modeldir).to(device)
-    else: # for BERT, RoBERTa
-        model = transformers.AutoModelForCausalLM.from_pretrained(modeldir).to(device)
+    else: # for BERT, RoBERTa, ALBERT, DISTILBERT
+        model = transformers.AutoModelForMaskedLM.from_pretrained(modeldir).to(device)
     model.eval()
     
     # Getting top k predictions from the model
