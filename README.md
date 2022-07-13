@@ -22,6 +22,8 @@ result.txt has the result
 
 sensitivity.txt has the neg sensitivity result
 
+all predictions top 20 are saved in prediction folder.
+
 References-
 Battig, William F. and William Edward Montague. “Category norms of verbal items in 56 categories A replication and extension of the Connecticut category norms.” Journal of Experimental Psychology 80 (1969): 1-46. 
 

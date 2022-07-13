@@ -1,0 +1,5 @@
+['a', 'one', 'married', 'not', 'family', 'the', 'present', 'female', 'an', 'dependent', 'person', 'right', 'aunt', 'independent', 'another', 'born', 'object', 'woman', 'b', 'someone']
+['a', 'one', 'object', 'not', 'an', 'the', 'independent', 'dependent', 'person', 'family', 'c', 'property', 'verb', 'member', 'subject', 's', 'relative', 'possessive', 'relationship', 'noun']
+['father', 'one', 'a', 'child', 'family', 'born', 'parent', 'son', 'mother', 'dependent', 'dominant', 'male', 'property', 'husband', 'someone', 'married', 'partner', 'independent', 'involved', 'another']
+['mother', 'one', 'female', 'child', 'dependent', 'a', 'born', 'pregnant', 'daughter', 'independent', 'parent', 'family', 'woman', 'male', 'married', 'dominant', 'father', 'maternal', 'not', 'paternal']
+['brother', 'one', 'a', 'sibling', 'sister', 'subordinate', 'another', 'family', 'member', 'partner', 'father', 'cousin', 'son', 'brothers', 'friend', 'dependent', 'identical', 'child', 'related', 'siblings']

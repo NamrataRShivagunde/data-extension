@@ -167,56 +167,56 @@ def evaluation(modeldir, device, source, label, k, file_path):
         top_tok_preds = tokenizer.decode(top_inds, skip_special_tokens=True)
         top_predictions.append(top_tok_preds)
 
-        step = 1
-        dataset = 'role-1500'
-        if 'neg' in file_path:
-            step = 2 # for neg as we need only affirmative sentences
-            dataset = 'neg-1500-simp'
+    step = 1
+    dataset = 'role-1500'
+    if 'neg' in file_path:
+        step = 2 # for neg as we need only affirmative sentences
+        dataset = 'neg-1500-simp'
+
+    # for role - 1500
+    # Accuracy for top 1, 5, 10 and 20 predictions
+    topkmatch = 0
+    top10match = 0
+    top5match = 0
+    top1match = 0
+    flipped = 0 # to keep track of how many times target word flips seeing 'not'
+    file_pred = open("predictions/{}/{}.txt".format(dataset, modeldir), 'w')
+
+    for i in range(0, len(top_predictions), step):
+
+        list_top_pred = top_predictions[i].split(' ')
+        file_pred.writelines([str(list_top_pred),'\n'])
+
+
+        if label[i] in list_top_pred:
+            topkmatch += 1
+        if label[i] in list_top_pred[:10]:
+            top10match += 1
+        if label[i] in list_top_pred[:5]:
+            top5match += 1
+        if label[i] == list_top_pred[0]:
+            top1match += 1
+            # sensitivity for neg
+            if 'neg' in file_path:
+                if list_top_pred[0] != top_predictions[i+1].split(' ')[0]:
+                    flipped += 1
+
+    topk_accuracy = step * topkmatch / len(top_predictions)
+    top10_accuracy = step * top10match / len(top_predictions)
+    top5_accuracy = step * top5match / len(top_predictions)
+    top1_accuracy = step * top1match / len(top_predictions)
+
+    print("model = ", modeldir)
+    print("Top 20 match = ", topk_accuracy)
+    print("Top 10 match = ", top10_accuracy)
+    print("Top 5 match = ", top5_accuracy)
+    print("Top 1 match = ", top1_accuracy)
     
-        # for role - 1500
-        # Accuracy for top 1, 5, 10 and 20 predictions
-        topkmatch = 0
-        top10match = 0
-        top5match = 0
-        top1match = 0
-        flipped = 0 # to keep track of how many times target word flips seeing 'not'
-
-        for i in range(0, len(top_predictions), step):
-
-            list_top_pred = top_predictions[i].split(' ')
-
-            file_pred = open("predictions/{}/{}.txt".format(dataset, modeldir), 'w')
-            file_pred.writelines([str(list_top_pred)])
-
-
-            if label[i] in list_top_pred:
-                topkmatch += 1
-            if label[i] in list_top_pred[:10]:
-                top10match += 1
-            if label[i] in list_top_pred[:5]:
-                top5match += 1
-            if label[i] == list_top_pred[0]:
-                top1match += 1
-                # sensitivity for neg
-                if 'neg' in file_path:
-                    if list_top_pred[0] != top_predictions[i+1].split(' ')[0]:
-                        flipped += 1
-
-        topk_accuracy = step * topkmatch / len(top_predictions)
-        top10_accuracy = step * top10match / len(top_predictions)
-        top5_accuracy = step * top5match / len(top_predictions)
-        top1_accuracy = step * top1match / len(top_predictions)
-
-        print("model = ", modeldir)
-        print("Top 20 match = ", topk_accuracy)
-        print("Top 10 match = ", top10_accuracy)
-        print("Top 5 match = ", top5_accuracy)
-        print("Top 1 match = ", top1_accuracy)
-        
-        file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
-        if 'neg' in file_path:
-            sensitivity_record.writelines([modeldir, " | ", "% target word changed due to negation = " , str(2 * flipped/len(top_predictions)), "\n"])
-        print("Completed experiment for ", modeldir)
+    file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
+    if 'neg' in file_path:
+        if top1match != 0:
+            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(2 * flipped/top1match), " | top 1 match = ", str(top1match),"\n"])
+    print("Completed experiment for ", modeldir)
 
 def evaluation_gpt3(modeldir, key, source, label, file_path):
     """
@@ -260,7 +260,7 @@ def evaluation_gpt3(modeldir, key, source, label, file_path):
             if label[i] in top5pred[i]:
                 top5matchgpt3 += 1
 
-    file = open("gpt3_result.txt", 'w')
+    file = open("gpt3_result.txt", 'a')
     file.writelines([dataset," top1 accuracy = ", str(step*top1matchgpt3/len(label)), " | ", "top5 accuracy = ",  str(step*top5matchgpt3/len(label)), "\n"])
 
     print("top1 match", top1matchgpt3)

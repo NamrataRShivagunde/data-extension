@@ -1,0 +1,5 @@
+['=', 'where', 'if', '+', 'and', 'when', 'or:', 'with,', 'for;=', 'whose', 'as', 'in', 'by', 'whenever', 'because', 'except']
+['=', 'if', 'where', 'and', 'when', '+', 'or:', 'with', 'for,', 'whenever=;', 'in', 'as', 'whose', 'by', 'unless', 'except']
+['and', 'or', 'if', 'when', 'with', 'whose', 'by:', '=,;', 'where', 'for', '+', 'in', 'as', 'because', 'who', 'from', 'without']
+['and', 'or', 'if', 'with:', 'where', '=,', '+', 'when;', 'whose', 'by', 'in', 'for', 'except', 'as', 'without/', 'under']
+['and', 'or', 'if', '=', 'with', 'when', '+', 'where,', 'whose:;', 'by', 'for', 'in', 'as', 'except', 'than=/']
