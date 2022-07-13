@@ -1,1 +1,2 @@
 role-1500 top1 accuracy = 0.05533333333333333 | top5 accuracy = 0.24533333333333332
+neg-1500-simp top1 accuracy = 0.0 | top5 accuracy = 0.22857142857142856
