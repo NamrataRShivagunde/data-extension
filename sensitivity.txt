@@ -1,2 +1,0 @@
-bert-base-uncased | % target word changed due to negation = 0.44545454545454544
-t5-small | % target word changed due to negation = 0.5337662337662338
