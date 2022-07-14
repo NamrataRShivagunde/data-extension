@@ -194,9 +194,6 @@ def evaluation(modeldir, device, source, label, k, file_path):
             top10match += 1
         if label[i] in list_top_pred[:5]:
             top5match += 1
-        else:
-            print(i)
-            print(label[i], "--->", list_top_pred[:5])
         if label[i] == list_top_pred[0]:
             top1match += 1
             # sensitivity for neg
