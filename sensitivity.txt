@@ -1,0 +1,4 @@
+roberta-base | % target word changed = 0.5730994152046783 | flipped = 98 | top 1 match = 171
+roberta-large | % target word changed = 0.5238095238095238 | flipped = 121 | top 1 match = 231
+t5-small | % target word changed = 0.9230769230769231 | flipped = 12 | top 1 match = 13
+t5-3b | % target word changed = 0.5392156862745098 | flipped = 165 | top 1 match = 306
