@@ -6,16 +6,16 @@ parser.add_argument("datasetpath", default=None, type=str)
 
 args = parser.parse_args()
 
-os.system('python evaluation.py {} bert-base-uncased'.format(args.datasetpath))
-os.system('python evaluation.py {} bert-large-uncased'.format(args.datasetpath))
+# os.system('python evaluation.py {} bert-base-uncased'.format(args.datasetpath))
+# os.system('python evaluation.py {} bert-large-uncased'.format(args.datasetpath))
 
-os.system('python evaluation.py {} distilbert-base-uncased'.format(args.datasetpath))
+# os.system('python evaluation.py {} distilbert-base-uncased'.format(args.datasetpath))
 
-os.system('python evaluation.py {} roberta-base'.format(args.datasetpath))
-os.system('python evaluation.py {} roberta-large'.format(args.datasetpath))
+# os.system('python evaluation.py {} roberta-base'.format(args.datasetpath))
+# os.system('python evaluation.py {} roberta-large'.format(args.datasetpath))
 
-os.system('python evaluation.py {} albert-base-v1'.format(args.datasetpath))
-os.system('python evaluation.py {} albert-large-v1'.format(args.datasetpath))
+# os.system('python evaluation.py {} albert-base-v1'.format(args.datasetpath))
+# os.system('python evaluation.py {} albert-large-v1'.format(args.datasetpath))
 os.system('python evaluation.py {} albert-xlarge-v1'.format(args.datasetpath))
 os.system('python evaluation.py {} albert-xxlarge-v1'.format(args.datasetpath))
 
