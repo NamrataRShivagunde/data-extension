@@ -170,6 +170,16 @@ def evaluation(modeldir, device, source, label, k, file_path):
         top_tok_preds = tokenizer.decode(top_inds, skip_special_tokens=True)
         top_predictions.append(top_tok_preds)
     
+    # write all prediction store a file- includes affirmative and negation predictions
+    file_allpred = open("predictions/predictions-all/{}/{}.txt".format('neg-1500-simp', modeldir), 'w')
+    
+    for i in range(len(top_predictions)):
+        # print(i, source[i], label[i],top_predictions[i])
+
+        list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
+        file_allpred.writelines([str(list_top_pred),'\n'])
+    print("prediction saved for ", modeldir)
+    
     step = 1
     dataset = 'role-1500'
     if 'neg' in file_path:
@@ -183,7 +193,8 @@ def evaluation(modeldir, device, source, label, k, file_path):
     top5match = 0
     top1match = 0
     flipped = 0 # to keep track of how many times target word flips seeing 'not'
-    file_pred = open("predictions/{}/{}.txt".format(dataset, modeldir), 'w')
+    # file_pred = open("predictions/{}/{}.txt".format('dataset', modeldir), 'w')
+    file_pred = open("predictions/predictions-raw/neg-136-simp/{}.txt".format(modeldir), 'w')
     # print(len(top_predictions))
 
     for i in range(0, len(top_predictions), step):
