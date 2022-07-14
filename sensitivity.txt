@@ -16,3 +16,13 @@ distilbert-base-uncased | % target word changed = 0.4590909090909091 | flipped =
 albert-base-v1 | % target word changed = 0.6363636363636364 | flipped = 70 | top 1 match = 110
 albert-large-v1 | % target word changed = 0.7450980392156863 | flipped = 76 | top 1 match = 102
 albert-xlarge-v1 | % target word changed = 0.7721518987341772 | flipped = 61 | top 1 match = 79
+albert-xlarge-v1 | % target word changed = 0.7721518987341772 | flipped = 61 | top 1 match = 79
+albert-xxlarge-v1 | % target word changed = 0.8817204301075269 | flipped = 82 | top 1 match = 93
+albert-base-v2 | % target word changed = 1.0 | flipped = 15 | top 1 match = 15
+albert-large-v2 | % target word changed = 0.8048780487804879 | flipped = 66 | top 1 match = 82
+albert-xlarge-v2 | % target word changed = 0.5421052631578948 | flipped = 103 | top 1 match = 190
+albert-xxlarge-v2 | % target word changed = 0.7719298245614035 | flipped = 88 | top 1 match = 114
+t5-small | % target word changed = 0.9230769230769231 | flipped = 12 | top 1 match = 13
+t5-base | % target word changed = 0.896969696969697 | flipped = 148 | top 1 match = 165
+t5-large | % target word changed = 0.6571428571428571 | flipped = 115 | top 1 match = 175
+t5-3b | % target word changed = 0.5392156862745098 | flipped = 165 | top 1 match = 306
