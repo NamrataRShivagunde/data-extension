@@ -129,6 +129,8 @@ def evaluation(modeldir, device, source, label, k, file_path):
     
     # Getting top k predictions from the model
     top_predictions = []
+    x = 5 # index used to pick predictions, it only changes for roberta as its first predcition is always a space or ',' or '.'
+    y = 0
     
     for item in source:
         # item is e.g. 'The librarian documented which journalist the celebrities had [MASK]'
@@ -147,6 +149,8 @@ def evaluation(modeldir, device, source, label, k, file_path):
 
         if modeldir.startswith('roberta'):
             token = '<mask>'
+            x = 6
+            y = 1
         else:
             token ='[MASK]'
 
@@ -192,13 +196,13 @@ def evaluation(modeldir, device, source, label, k, file_path):
             topkmatch += 1
         if label[i] in list_top_pred[:10]:
             top10match += 1
-        if label[i] in list_top_pred[:5]:
+        if label[i] in list_top_pred[:x]:
             top5match += 1
-        if label[i] == list_top_pred[0]:
+        if label[i] == list_top_pred[y]:
             top1match += 1
             # sensitivity for neg
             if 'neg' in file_path:
-                if list_top_pred[0] != top_predictions[i+1].split(' ')[0]:
+                if list_top_pred[y] != top_predictions[i+1].split(' ')[y]:
                     flipped += 1
     # print(topkmatch)
     topk_accuracy = step * topkmatch / len(top_predictions)

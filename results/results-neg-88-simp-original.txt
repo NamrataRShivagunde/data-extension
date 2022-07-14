@@ -1,0 +1,232 @@
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  bert-base-uncased
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+model =  bert-base-uncased
+Top 20 match =  1.0
+Top 10 match =  1.0
+Top 5 match =  1.0
+Top 1 match =  0.3888888888888889
+Completed experiment for  bert-base-uncased
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  bert-large-uncased
+Some weights of the model checkpoint at bert-large-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+model =  bert-large-uncased
+Top 20 match =  1.0
+Top 10 match =  1.0
+Top 5 match =  1.0
+Top 1 match =  0.4444444444444444
+Completed experiment for  bert-large-uncased
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  distilbert-base-uncased
+model =  distilbert-base-uncased
+Top 20 match =  1.0
+Top 10 match =  1.0
+Top 5 match =  0.9444444444444444
+Top 1 match =  0.6111111111111112
+Completed experiment for  distilbert-base-uncased
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  roberta-base
+model =  roberta-base
+Top 20 match =  0.8888888888888888
+Top 10 match =  0.7222222222222222
+Top 5 match =  0.7222222222222222
+Top 1 match =  0.0
+Completed experiment for  roberta-base
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  roberta-large
+model =  roberta-large
+Top 20 match =  0.8888888888888888
+Top 10 match =  0.8888888888888888
+Top 5 match =  0.8888888888888888
+Top 1 match =  0.0
+Completed experiment for  roberta-large
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-base-v1
+model =  albert-base-v1
+Top 20 match =  0.8333333333333334
+Top 10 match =  0.8333333333333334
+Top 5 match =  0.7222222222222222
+Top 1 match =  0.2777777777777778
+Completed experiment for  albert-base-v1
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-large-v1
+model =  albert-large-v1
+Top 20 match =  0.8333333333333334
+Top 10 match =  0.8333333333333334
+Top 5 match =  0.8333333333333334
+Top 1 match =  0.2222222222222222
+Completed experiment for  albert-large-v1
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-xlarge-v1
+model =  albert-xlarge-v1
+Top 20 match =  0.6111111111111112
+Top 10 match =  0.6111111111111112
+Top 5 match =  0.5555555555555556
+Top 1 match =  0.2777777777777778
+Completed experiment for  albert-xlarge-v1
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-xxlarge-v1
+model =  albert-xxlarge-v1
+Top 20 match =  1.0
+Top 10 match =  0.9444444444444444
+Top 5 match =  0.7222222222222222
+Top 1 match =  0.2777777777777778
+Completed experiment for  albert-xxlarge-v1
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-base-v2
+model =  albert-base-v2
+Top 20 match =  0.6666666666666666
+Top 10 match =  0.4444444444444444
+Top 5 match =  0.3333333333333333
+Top 1 match =  0.0
+Completed experiment for  albert-base-v2
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-large-v2
+model =  albert-large-v2
+Top 20 match =  0.9444444444444444
+Top 10 match =  0.8333333333333334
+Top 5 match =  0.8333333333333334
+Top 1 match =  0.2222222222222222
+Completed experiment for  albert-large-v2
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-xlarge-v2
+model =  albert-xlarge-v2
+Top 20 match =  1.0
+Top 10 match =  1.0
+Top 5 match =  0.9444444444444444
+Top 1 match =  0.7222222222222222
+Completed experiment for  albert-xlarge-v2
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  albert-xxlarge-v2
+model =  albert-xxlarge-v2
+Top 20 match =  1.0
+Top 10 match =  1.0
+Top 5 match =  1.0
+Top 1 match =  0.3888888888888889
+Completed experiment for  albert-xxlarge-v2
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  t5-small
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/transformers/models/t5/tokenization_t5_fast.py:156: FutureWarning: This tokenizer was incorrectly instantiated with a model max length of 512 which will be corrected in Transformers v5.
+For now, this behavior is kept to avoid breaking backwards compatibility when padding/encoding with `truncation is True`.
+- Be aware that you SHOULD NOT rely on t5-small automatically truncating your input to 512 when padding/encoding.
+- If you want to encode/pad to sequences longer than 512 you can either instantiate this tokenizer with `model_max_length` or pass `max_length` when encoding/padding.
+- To avoid this warning, please instantiate this tokenizer with `model_max_length` set to your preferred value.
+  warnings.warn(
+model =  t5-small
+Top 20 match =  0.6111111111111112
+Top 10 match =  0.5
+Top 5 match =  0.3333333333333333
+Top 1 match =  0.0
+Completed experiment for  t5-small
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  t5-base
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/transformers/models/t5/tokenization_t5_fast.py:156: FutureWarning: This tokenizer was incorrectly instantiated with a model max length of 512 which will be corrected in Transformers v5.
+For now, this behavior is kept to avoid breaking backwards compatibility when padding/encoding with `truncation is True`.
+- Be aware that you SHOULD NOT rely on t5-base automatically truncating your input to 512 when padding/encoding.
+- If you want to encode/pad to sequences longer than 512 you can either instantiate this tokenizer with `model_max_length` or pass `max_length` when encoding/padding.
+- To avoid this warning, please instantiate this tokenizer with `model_max_length` set to your preferred value.
+  warnings.warn(
+model =  t5-base
+Top 20 match =  0.9444444444444444
+Top 10 match =  0.8888888888888888
+Top 5 match =  0.8888888888888888
+Top 1 match =  0.05555555555555555
+Completed experiment for  t5-base
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  t5-large
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/transformers/models/t5/tokenization_t5_fast.py:156: FutureWarning: This tokenizer was incorrectly instantiated with a model max length of 512 which will be corrected in Transformers v5.
+For now, this behavior is kept to avoid breaking backwards compatibility when padding/encoding with `truncation is True`.
+- Be aware that you SHOULD NOT rely on t5-large automatically truncating your input to 512 when padding/encoding.
+- If you want to encode/pad to sequences longer than 512 you can either instantiate this tokenizer with `model_max_length` or pass `max_length` when encoding/padding.
+- To avoid this warning, please instantiate this tokenizer with `model_max_length` set to your preferred value.
+  warnings.warn(
+model =  t5-large
+Top 20 match =  0.9444444444444444
+Top 10 match =  0.9444444444444444
+Top 5 match =  0.9444444444444444
+Top 1 match =  0.0
+Completed experiment for  t5-large
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  t5-3b
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/transformers/models/t5/tokenization_t5_fast.py:156: FutureWarning: This tokenizer was incorrectly instantiated with a model max length of 512 which will be corrected in Transformers v5.
+For now, this behavior is kept to avoid breaking backwards compatibility when padding/encoding with `truncation is True`.
+- Be aware that you SHOULD NOT rely on t5-3b automatically truncating your input to 512 when padding/encoding.
+- If you want to encode/pad to sequences longer than 512 you can either instantiate this tokenizer with `model_max_length` or pass `max_length` when encoding/padding.
+- To avoid this warning, please instantiate this tokenizer with `model_max_length` set to your preferred value.
+  warnings.warn(
+model =  t5-3b
+Top 20 match =  0.7777777777777778
+Top 10 match =  0.7777777777777778
+Top 5 match =  0.7222222222222222
+Top 1 match =  0.2777777777777778
+Completed experiment for  t5-3b
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  gpt2
+model =  gpt2
+Top 20 match =  0.7777777777777778
+Top 10 match =  0.5
+Top 5 match =  0.16666666666666666
+Top 1 match =  0.0
+Completed experiment for  gpt2
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  gpt2-medium
+model =  gpt2-medium
+Top 20 match =  0.8333333333333334
+Top 10 match =  0.6666666666666666
+Top 5 match =  0.4444444444444444
+Top 1 match =  0.0
+Completed experiment for  gpt2-medium
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  gpt2-large
+model =  gpt2-large
+Top 20 match =  0.8888888888888888
+Top 10 match =  0.7222222222222222
+Top 5 match =  0.5555555555555556
+Top 1 match =  0.0
+Completed experiment for  gpt2-large
+/home/nshiva/code/data-extension/venv-dataext/lib/python3.8/site-packages/torch/cuda/__init__.py:83: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  ../c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Running experiment for  gpt2-xl
+model =  gpt2-xl
+Top 20 match =  0.8888888888888888
+Top 10 match =  0.8333333333333334
+Top 5 match =  0.5
+Top 1 match =  0.0
+Completed experiment for  gpt2-xl
+
+bert-base-uncased | % target word changed = 0.42857142857142855 | flipped = 6 | top 1 match = 14
+bert-large-uncased | % target word changed = 0.625 | flipped = 10 | top 1 match = 16
+distilbert-base-uncased | % target word changed = 0.2727272727272727 | flipped = 6 | top 1 match = 22
+albert-base-v1 | % target word changed = 0.2 | flipped = 2 | top 1 match = 10
+albert-large-v1 | % target word changed = 0.75 | flipped = 6 | top 1 match = 8
+albert-xlarge-v1 | % target word changed = 0.4 | flipped = 4 | top 1 match = 10
+albert-xxlarge-v1 | % target word changed = 0.6 | flipped = 6 | top 1 match = 10
+albert-large-v2 | % target word changed = 0.75 | flipped = 6 | top 1 match = 8
+albert-xlarge-v2 | % target word changed = 0.23076923076923078 | flipped = 6 | top 1 match = 26
+albert-xxlarge-v2 | % target word changed = 0.42857142857142855 | flipped = 6 | top 1 match = 14
+t5-base | % target word changed = 0.0 | flipped = 0 | top 1 match = 2
+t5-3b | % target word changed = 0.2 | flipped = 2 | top 1 match = 10
