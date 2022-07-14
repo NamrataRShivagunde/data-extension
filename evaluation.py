@@ -135,6 +135,8 @@ def evaluation(modeldir, device, source, label, k, file_path):
 
         tokenized_input = tokenizer(item, return_tensors="pt")
         tokenized_input = tokenized_input.to(device)
+        # print(tokenized_input)
+        # print(tokenizer.decode(tokenized_input["input_ids"][0]))
 
         if modeldir.startswith('t5'):
             decoder_ids = tokenizer("<pad> <extra_id_0>", add_special_tokens=False, return_tensors="pt").input_ids
@@ -158,11 +160,12 @@ def evaluation(modeldir, device, source, label, k, file_path):
                     mask_index = i       
                     
         predictions = predictions.logits
+
         softpred = torch.softmax(predictions[0, mask_index],0)
         top_inds = torch.argsort(softpred, descending=True)[:k].cpu().numpy()
         top_tok_preds = tokenizer.decode(top_inds, skip_special_tokens=True)
         top_predictions.append(top_tok_preds)
-
+    
     step = 1
     dataset = 'role-1500'
     if 'neg' in file_path:
@@ -177,12 +180,13 @@ def evaluation(modeldir, device, source, label, k, file_path):
     top1match = 0
     flipped = 0 # to keep track of how many times target word flips seeing 'not'
     file_pred = open("predictions/{}/{}.txt".format(dataset, modeldir), 'w')
+    # print(len(top_predictions))
 
     for i in range(0, len(top_predictions), step):
+        # print(i, source[i], label[i],top_predictions[i])
 
-        list_top_pred = top_predictions[i].split(' ')
+        list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
         file_pred.writelines([str(list_top_pred),'\n'])
-
 
         if label[i] in list_top_pred:
             topkmatch += 1
@@ -190,13 +194,16 @@ def evaluation(modeldir, device, source, label, k, file_path):
             top10match += 1
         if label[i] in list_top_pred[:5]:
             top5match += 1
+        else:
+            print(i)
+            print(label[i], "--->", list_top_pred[:5])
         if label[i] == list_top_pred[0]:
             top1match += 1
             # sensitivity for neg
             if 'neg' in file_path:
                 if list_top_pred[0] != top_predictions[i+1].split(' ')[0]:
                     flipped += 1
-
+    # print(topkmatch)
     topk_accuracy = step * topkmatch / len(top_predictions)
     top10_accuracy = step * top10match / len(top_predictions)
     top5_accuracy = step * top5match / len(top_predictions)
@@ -211,7 +218,7 @@ def evaluation(modeldir, device, source, label, k, file_path):
     file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
     if 'neg' in file_path:
         if top1match != 0:
-            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(step * flipped/top1match), " | top 1 match = ", str(top1match),"\n"])
+            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(flipped/top1match), " | flipped = ", str(flipped)," | top 1 match = ", str(top1match),"\n"])
     print("Completed experiment for ", modeldir)
 
 def evaluation_gpt3(modeldir, key, source, label, file_path):

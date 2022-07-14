@@ -9,6 +9,8 @@ args = parser.parse_args()
 os.system('python evaluation.py {} bert-base-uncased'.format(args.datasetpath))
 os.system('python evaluation.py {} bert-large-uncased'.format(args.datasetpath))
 
+os.system('python evaluation.py {} distilbert-base-uncased'.format(args.datasetpath))
+
 os.system('python evaluation.py {} roberta-base'.format(args.datasetpath))
 os.system('python evaluation.py {} roberta-large'.format(args.datasetpath))
 
@@ -34,4 +36,4 @@ os.system('python evaluation.py {} gpt2-large'.format(args.datasetpath))
 
 os.system('python evaluation.py {} gpt2-xl'.format(args.datasetpath))
 
-os.system('python evaluation.py {} distilbert-base-uncased'.format(args.datasetpath))
+

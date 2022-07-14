@@ -1,8 +1,0 @@
-bert-base-uncased | % target word changed = 0.8163265306122449 | top 1 match = 49
-albert-xxlarge-v1 | % target word changed = 0.8181818181818182 | top 1 match = 22
-albert-xlarge-v2 | % target word changed = 0.65 | top 1 match = 40
-albert-xxlarge-v2 | % target word changed = 1.0526315789473684 | top 1 match = 38
-t5-base | % target word changed = 0.8 | top 1 match = 10
-t5-large | % target word changed = 1.1700680272108843 | top 1 match = 147
-t5-3b | % target word changed = 0.7073170731707317 | top 1 match = 246
-distilbert-base-uncased | % target word changed = 2.0 | top 1 match = 12
