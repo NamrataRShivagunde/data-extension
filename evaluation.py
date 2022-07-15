@@ -181,10 +181,10 @@ def evaluation(modeldir, device, source, label, k, file_path):
         print(list_top_pred, "---->", neg_list_top_pred)
         if list_top_pred != neg_list_top_pred:
             flip += 1
-    file_allsens.writelines(["neg-136-simp --->", modeldir , " | #flipped = ", str(flip), "\n"])
+    file_allsens.writelines(["neg-1500-simp --->", modeldir , " | #flipped = ", str(flip), "\n"])
     
     # write all prediction store a file- includes affirmative and negation predictions
-    file_allpred = open("predictions/predictions-raw/neg-136-simp/{}.txt".format(modeldir), 'w')
+    file_allpred = open("predictions/predictions-all/neg-1500-simp/{}.txt".format(modeldir), 'w')
     for i in range(len(top_predictions)):
         list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
         file_allpred.writelines([str(list_top_pred),'\n'])
