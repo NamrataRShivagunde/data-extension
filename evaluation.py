@@ -170,68 +170,78 @@ def evaluation(modeldir, device, source, label, k, file_path):
         top_tok_preds = tokenizer.decode(top_inds, skip_special_tokens=True)
         top_predictions.append(top_tok_preds)
     
-    # write all prediction store a file- includes affirmative and negation predictions
-    file_allpred = open("predictions/predictions-all/{}/{}.txt".format('neg-1500-simp', modeldir), 'w')
+    # #of flips due to negation
+    # neg-1500-simp, prediction-all (folder and dataset)
+    flip = 0
+    file_allsens = open('sensitivity-neg-all.txt', 'a')
+    for i in range(0, len(top_predictions),2):
+        list_top_pred = top_predictions[i].split(' ')[y] # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
+        neg_list_top_pred  = top_predictions[i+1].split(' ')[y]
+        print(list_top_pred, "---->", neg_list_top_pred)
+        if list_top_pred != neg_list_top_pred:
+            flip += 1
+    file_allsens.writelines(["neg-136-simp --->", modeldir , " | #flipped = ", str(flip), "\n"])
     
+    # write all prediction store a file- includes affirmative and negation predictions
+    file_allpred = open("predictions/predictions-raw/neg-136-simp/{}.txt".format(modeldir), 'w')
     for i in range(len(top_predictions)):
-        # print(i, source[i], label[i],top_predictions[i])
-
         list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
         file_allpred.writelines([str(list_top_pred),'\n'])
     print("prediction saved for ", modeldir)
     
-    step = 1
-    dataset = 'role-1500'
-    if 'neg' in file_path:
-        step = 2 # for neg as we need only affirmative sentences
-        dataset = 'neg-1500-simp'
+    # # all sentence for role and only affirmative for neg-simp
+    # step = 1
+    # dataset = 'role-1500'
+    # if 'neg' in file_path:
+    #     step = 2 # for neg as we need only affirmative sentences
+    #     dataset = 'neg-1500-simp'
 
-    # for role - 1500
-    # Accuracy for top 1, 5, 10 and 20 predictions
-    topkmatch = 0
-    top10match = 0
-    top5match = 0
-    top1match = 0
-    flipped = 0 # to keep track of how many times target word flips seeing 'not'
-    # file_pred = open("predictions/{}/{}.txt".format('dataset', modeldir), 'w')
-    file_pred = open("predictions/predictions-raw/neg-136-simp/{}.txt".format(modeldir), 'w')
-    # print(len(top_predictions))
+    # # for role - 1500
+    # # Accuracy for top 1, 5, 10 and 20 predictions
+    # topkmatch = 0
+    # top10match = 0
+    # top5match = 0
+    # top1match = 0
+    # flipped = 0 # to keep track of how many times target word flips seeing 'not'
+    # # file_pred = open("predictions/{}/{}.txt".format('dataset', modeldir), 'w')
+    # file_pred = open("predictions/predictions-raw/neg-136-simp/{}.txt".format(modeldir), 'w')
+    # # print(len(top_predictions))
 
-    for i in range(0, len(top_predictions), step):
-        # print(i, source[i], label[i],top_predictions[i])
+    # for i in range(0, len(top_predictions), step):
+    #     # print(i, source[i], label[i],top_predictions[i])
 
-        list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
-        file_pred.writelines([str(list_top_pred),'\n'])
+    #     list_top_pred = top_predictions[i].split(' ') # e.g. ['fish', 'trout', 'species', 'mineral', 'protein']
+    #     file_pred.writelines([str(list_top_pred),'\n'])
 
-        if label[i] in list_top_pred:
-            topkmatch += 1
-        if label[i] in list_top_pred[:10]:
-            top10match += 1
-        if label[i] in list_top_pred[:x]:
-            top5match += 1
-        if label[i] == list_top_pred[y]:
-            top1match += 1
-            # sensitivity for neg
-            if 'neg' in file_path:
-                if list_top_pred[y] != top_predictions[i+1].split(' ')[y]:
-                    flipped += 1
-    # print(topkmatch)
-    topk_accuracy = step * topkmatch / len(top_predictions)
-    top10_accuracy = step * top10match / len(top_predictions)
-    top5_accuracy = step * top5match / len(top_predictions)
-    top1_accuracy = step * top1match / len(top_predictions)
+    #     if label[i] in list_top_pred:
+    #         topkmatch += 1
+    #     if label[i] in list_top_pred[:10]:
+    #         top10match += 1
+    #     if label[i] in list_top_pred[:x]:
+    #         top5match += 1
+    #     if label[i] == list_top_pred[y]:
+    #         top1match += 1
+    #         # sensitivity for neg
+    #         if 'neg' in file_path:
+    #             if list_top_pred[y] != top_predictions[i+1].split(' ')[y]:
+    #                 flipped += 1
+    # # print(topkmatch)
+    # topk_accuracy = step * topkmatch / len(top_predictions)
+    # top10_accuracy = step * top10match / len(top_predictions)
+    # top5_accuracy = step * top5match / len(top_predictions)
+    # top1_accuracy = step * top1match / len(top_predictions)
 
-    print("model = ", modeldir)
-    print("Top 20 match = ", topk_accuracy)
-    print("Top 10 match = ", top10_accuracy)
-    print("Top 5 match = ", top5_accuracy)
-    print("Top 1 match = ", top1_accuracy)
+    # print("model = ", modeldir)
+    # print("Top 20 match = ", topk_accuracy)
+    # print("Top 10 match = ", top10_accuracy)
+    # print("Top 5 match = ", top5_accuracy)
+    # print("Top 1 match = ", top1_accuracy)
     
-    file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
-    if 'neg' in file_path:
-        if top1match != 0:
-            sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(flipped/top1match), " | flipped = ", str(flipped)," | top 1 match = ", str(top1match),"\n"])
-    print("Completed experiment for ", modeldir)
+    # file.writelines([file_path," | ", modeldir, " | ", str(topk_accuracy),  " | ", str(top10_accuracy),  " | ", str(top5_accuracy), " | ", str(top1_accuracy), '\n\n'])
+    # if 'neg' in file_path:
+    #     if top1match != 0:
+    #         sensitivity_record.writelines([modeldir, " | ", "% target word changed = " , str(flipped/top1match), " | flipped = ", str(flipped)," | top 1 match = ", str(top1match),"\n"])
+    # print("Completed experiment for ", modeldir)
 
 def evaluation_gpt3(modeldir, key, source, label, file_path):
     """
