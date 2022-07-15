@@ -16,3 +16,7 @@ neg-136-simp --->t5-base | #flipped = 10
 neg-136-simp --->t5-large | #flipped = 18
 neg-136-simp --->t5-3b | #flipped = 24
 
+neg-136-simp --->gpt2 | #flipped = 24
+neg-136-simp --->gpt2-medium | #flipped = 18
+neg-136-simp --->gpt2-large | #flipped = 14
+neg-136-simp --->gpt2-xl | #flipped = 16
