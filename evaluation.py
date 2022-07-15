@@ -156,6 +156,7 @@ def evaluation(modeldir, device, source, label, k, file_path):
 
         if modeldir.startswith('gpt'):
             mask_index = -2  # -2 is position of last token
+            y = 1
         elif modeldir.startswith('t5'): 
             mask_index = 1   # 1 is position of <extra_id_0>
         else: 
